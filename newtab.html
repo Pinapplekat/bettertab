@@ -10,10 +10,15 @@
         
     <script src="newtab.js" defer></script>
         <center><img src="betterlogo.png" id="mainlogo"></center>
+        <div class="clock">
+            <span class="clock-time">12:00</span>
+            <span class="clock-ampm">AM</span><br>
+            <span class="clock-second">00</span>
+        </div>
         <div class="main">
             
             <div id="search">
-                <input id="searchbar" name="q" type="text" placeholder="Search with Google or type URL..." autocomplete="off" required >
+                <input id="searchbar" name="q" type="text" placeholder="Search with Google or type URL..." minlength="1" autocomplete="off" required >
                
             </div>
 </div>
@@ -28,8 +33,10 @@
         <a class="footer-url" href="https://voice-o-matic.glitch.me/">Better Assistant</a>
         <!-- <input type="checkbox" id="autofill"> -->
         <!-- <label for="autofill">Enable Autofill?</label> -->
-        <button class="footer-url" id="backgroundpopup">Change Background</button>
+        <button class="footer-url" id="backgroundpopup">Change Background</button><br>
+        <div class="credits">betterTab</div><div class="credits">Made by Elijah Ryerson</div> <div class="credits">and so was every other betterProject</div>
     </footer>
+    
     <div id="bg-whole">
         <div id="greybg"></div>
 
@@ -37,7 +44,10 @@
             <div id="bgurltype">
                 <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
                 <input type="text" name="" id="bgurl">
-            </div>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            <p>
+                Press enter while textbox selected to confirm
+            </p>
         </div>
     </div>
 </html>
