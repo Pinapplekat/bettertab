@@ -2,15 +2,18 @@
     font-family: monospace;
 }
 
+
+
 body{
     margin: 0px;
     padding: 0px;
     font-family: monospace;
     font-size: 13px;
     background: pink;
-    background-position: absolute;
+    background-position: center;
+    background-attachment: fixed;
     background-size: cover;
-    background-repeat: none;
+    background-repeat: no-repeat;
 }
 
 .popup-container{
@@ -170,7 +173,7 @@ body{
 }
 
 footer{
-    background-color: #FF8F9E;
+    background-color: rgba(255,143,158, 40%);
     position: absolute;
     bottom: 10px;
     width: 50%;
@@ -181,6 +184,8 @@ footer{
     margin-bottom: -3%;
     overflow: hidden;
     padding-bottom: 10px;
+    border-bottom: 3px solid #FF8F9E;
+    
 }
 
 footer p{
@@ -213,6 +218,7 @@ footer .footer-url:active{
 
 footer .footer-url:hover{
     border: 2px solid pink;
+    color: white;
 }
 
 #backgroundpopup:hover{
@@ -239,7 +245,7 @@ footer .footer-url:hover{
     position: fixed;
     background-color: #FF8F9E;
     width: 30%;
-    height: 40%;
+    height: 20%;
     top: 20%;
     left: 33%;
     border-radius: 15px;
@@ -263,16 +269,46 @@ footer .footer-url:hover{
 #bgurltype{
     position: relative;
     margin-top: auto;
-    margin-bottom: auto;
+    
     
 }
 
 #bgurltype label{
     font-size: 2.5vh;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     margin: 0;
 }
 
 #bg-whole{
     visibility: hidden;
+}
+
+.credits{
+    color: black;
+    transition: 0.5s;
+}
+
+.credits:hover{
+    color: white;
+}
+
+.clock{
+    background-color: rgba(255,143,158, 40%);
+    position: absolute;
+    padding: 12px;
+    border-radius: 14px;
+    top: 1%;
+    left: 1%;
+}
+
+.clock-time, .clock-ampm{
+    font-size: 8vh;
+}
+
+.clock-ampm{
+    font-size: 4vh;
+}
+
+.clock-second{
+    font-size: 4vh;
 }
