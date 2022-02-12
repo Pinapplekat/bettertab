@@ -2,7 +2,7 @@
 
     "name": "BetterTab",
     "version": "0.0",
-    "manifest_version": 2.10.2,
+    "manifest_version": "2.10.2",
     "description": "Better new tab for your new tab needs!",
     "browser_action": {
         "default_icon": "betterlogo.png"
