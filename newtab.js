@@ -6,16 +6,22 @@ const imgUrl = document.getElementById('bgurl')
 const bgPopup = document.getElementById('bgpopup')
 const wholeBg = document.getElementById('bg-whole')
 const greyBg = document.getElementById('greybg')
+const greyBg2 = document.getElementById('greybg2')
 const changeBtn = document.getElementById('backgroundpopup')
 const searchBar = document.getElementById("searchbar");
+const wholeTab = document.getElementById('tab-whole')
+const launchTabCustom = document.getElementById('launchTabCustomize')
+const tabName = document.getElementById('tabText')
 
 document.body.style.backgroundImage = `url('${localStorage.getItem('background')}')`
-
+document.title = `${localStorage.getItem('tabName')}`
 
 if(localStorage.getItem('background') != ''){
     searchBar.style.opacity = '0.7'
     searchBar.style.backgroundColor = 'black'
 }
+
+
 
 searchBar.addEventListener('keydown', (e) => {
     if(e.key === 'Enter'){
@@ -57,8 +63,13 @@ greyBg.addEventListener('click', () => {
 })
 
 
+launchTabCustom.addEventListener('click', () => {
+    wholeTab.style.visibility = 'visible'
+})
 
-
+greyBg2.addEventListener('click', () => {
+    wholeTab.style.visibility = 'hidden'
+})
 
 
 
@@ -76,7 +87,6 @@ wholeBg.addEventListener('keydown', (e) => {
 
             localStorage.setItem('background', imgUrl.value)
 
-            window.localStorage.setItem('bg', imgUrl.value)
             document.body.style.backgroundImage = `url('${localStorage.getItem('background')}')`
             searchBar.style.opacity = '0.7'
             searchBar.style.backgroundColor = 'black'
@@ -86,6 +96,31 @@ wholeBg.addEventListener('keydown', (e) => {
     }
     
 })
+
+
+
+
+wholeTab.addEventListener('keydown', (e) => {
+    console.log(e.key)
+    if(e.key === 'Enter'){
+        if(tabName.value === ""){
+            localStorage.setItem('tabName', tabName.value)
+            
+            document.title = 'New Tab'
+
+        }else{
+
+            localStorage.setItem('tabName', tabName.value)
+
+            document.title = `${localStorage.getItem('tabName')}`
+        }
+    } else if(e.key === 'Escape'){
+        wholeTab.style.visibility = "hidden"
+    }
+    
+})
+
+
 
 
 
@@ -111,7 +146,7 @@ class DigitalClock {
   
       this.element.querySelector(".clock-time").textContent = timeFormatted;
       this.element.querySelector(".clock-ampm").textContent = amPm;
-      this.element.querySelector(".clock-second").textContent = `${secondFormatted} s`;
+      this.element.querySelector(".clock-second").textContent = `${secondFormatted}s`;
     }
   
     getTimeParts() {
@@ -131,3 +166,73 @@ class DigitalClock {
   
   clockObject.start();
   
+
+
+  dragElement(document.getElementById("draggable"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "draggable")) {
+
+    document.getElementById(elmnt.id + "draggable").onmousedown = dragMouseDown;
+  } else {
+
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+const clockDisplay = document.querySelector('.clock')
+
+const isFixed = localStorage.getItem('isFixed')
+
+if(isFixed === true){
+    document.querySelector('#clockPosToggle').ariaChecked = true
+    clockDisplay.classList.add('fixed')
+}else{
+    document.querySelector('#clockPosToggle').ariaChecked = false
+    clockDisplay.classList.remove('fixed')
+
+}
+
+document.querySelector('#clockPosToggle').addEventListener('click', () => {
+        const clockDisplay = document.querySelector('.clock')
+        localStorage.setItem('isFixed', isFixed)
+        clockDisplay.classList.toggle('fixed')
+})
+
+if(document.querySelector('.clock').className.includes('fixed')){
+    const isFixed = true
+    localStorage.setItem('isFixed', isFixed)
+
+} else {
+    const isFixed = false
+    localStorage.setItem('isFixed', isFixed)
+}
