@@ -4,17 +4,13 @@
         <link rel="icon" href="betterlogo.png">
         <link rel="stylesheet" href="style.css">
         </style>
-        <title>New Tab</title>
+       
     </head>
     <body>
         
     <script src="newtab.js" defer></script>
-        <center><img src="betterlogo.png" id="mainlogo"></center>
-        <div class="clock">
-            <span class="clock-time">12:00</span>
-            <span class="clock-ampm">AM</span><br>
-            <span class="clock-second">00</span>
-        </div>
+        <img src="betterlogo.png" id="mainlogo">
+        
         <div class="main">
             
             <div id="search">
@@ -25,7 +21,7 @@
 
 
     </body>
-
+<br><br><br>
     <footer>
         <p>More Tools</p>
         <a class="footer-url" href="https://betterthanyou.glitch.me">Better Than You</a>
@@ -33,7 +29,11 @@
         <a class="footer-url" href="https://voice-o-matic.glitch.me/">Better Assistant</a>
         <!-- <input type="checkbox" id="autofill"> -->
         <!-- <label for="autofill">Enable Autofill?</label> -->
-        <button class="footer-url" id="backgroundpopup">Change Background</button><br>
+        <button class="footer-url" id="backgroundpopup">Change Background</button>
+        <button class="footer-url" id="launchTabCustomize">New Tab Name</button>
+
+        <input type="checkbox" class="footer-url" id="clockPosToggle"><label for="clockPosToggle">Clock moves when scroll</label>
+        <br>
         <div class="credits">betterTab</div><div class="credits">Made by Elijah Ryerson</div> <div class="credits">and so was every other betterProject</div>
     </footer>
     
@@ -43,11 +43,33 @@
         <div id="bgpopup">
             <div id="bgurltype">
                 <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
-                <input type="text" name="" id="bgurl">
-            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+                <input type="text" class="boxtext" id="bgurl">
+            </div><br><br><br><br>
             <p>
                 Press enter while textbox selected to confirm
             </p>
         </div>
+    </div>
+
+
+    <div id="tab-whole">
+        <div id="greybg2"></div>
+
+        <div id="bgpopup">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">What do you want the tab to be called?</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. New Tab" id="tabText">
+            </div><br><br><br><br>
+            <p>
+                Press enter while textbox selected to confirm
+            </p>
+        </div>
+    </div>
+
+
+    <div class="clock" id="draggable">
+        <span class="clock-time">12:00</span>
+        <span class="clock-ampm">AM</span><br>
+        <span class="clock-second">00</span>
     </div>
 </html>
