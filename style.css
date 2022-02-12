@@ -8,6 +8,9 @@ body{
     font-family: monospace;
     font-size: 13px;
     background: pink;
+    background-position: absolute;
+    background-size: cover;
+    background-repeat: none;
 }
 
 .popup-container{
@@ -24,7 +27,7 @@ body{
 }
 
 .main{
-    background: pink;
+    background: transparent;
     width: 350px;
     min-height: 207px;
     height: 75px;
@@ -147,6 +150,7 @@ body{
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    background-color: transparent;
 }
 
 #search input{
@@ -174,6 +178,7 @@ footer{
     text-align: center;
     width: 100%;
     margin: 0px;
+    margin-bottom: -3%;
     overflow: hidden;
     padding-bottom: 10px;
 }
@@ -183,26 +188,91 @@ footer p{
     color: white;
 }
 
-footer a{
+footer .footer-url{
     margin-right: 20px;
     color: rgb(0, 0, 0);
     border-radius: 8px;
     padding: 5px;
     transition: all .5s;
+    margin-bottom: 20px;
 }
 
-footer a:last-child{
+footer .footer-url:last-child{
     margin-right: 0;
 }
 
-footer a:active{
+footer .footer-url:active{
     color: white;
 }
 
-footer a:hover{
-    border: 1px solid black;
+#backgroundpopup{
+    background-color: pink;
+    border: none;
+    cursor: pointer;
 }
 
+footer .footer-url:hover{
+    border: 2px solid pink;
+}
+
+#backgroundpopup:hover{
+    border: 2px solid pink;
+}
 .autofiller{
     margin: auto;
+}
+
+#mainlogo{
+    margin-top: 10em;
+}
+
+#greybg{
+    position: fixed;
+    background-color: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+}
+
+#bgpopup{
+    position: fixed;
+    background-color: #FF8F9E;
+    width: 30%;
+    height: 40%;
+    top: 20%;
+    left: 33%;
+    border-radius: 15px;
+    padding: 25px;
+    padding-right: 40px;
+    
+}
+
+#bgurl{
+    width: 100%;
+    border-radius: 50px;
+    border: none;
+    font-size: 3vh;
+    padding-left: 15px;
+    border: 0px;
+    background-color: pink;
+    color: #fff;
+    
+}
+
+#bgurltype{
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+#bgurltype label{
+    font-size: 2.5vh;
+    margin-bottom: 100px;
+    margin: 0;
+}
+
+#bg-whole{
+    visibility: hidden;
 }
