@@ -9,23 +9,35 @@
     <body>
         
     <script src="newtab.js" defer></script>
-        
-        <div class="entire-page"></div>
-
+        <center><img src="betterlogo.png" id="mainlogo"></center>
+        <div class="main">
+            
             <div id="search">
-                <input id="searchbar" name="q" type="text" placeholder="Search with Google..." autocomplete="off" required >
+                <input id="searchbar" name="q" type="text" placeholder="Search with Google or type URL..." autocomplete="off" required >
                
             </div>
+</div>
+
 
     </body>
 
     <footer>
         <p>More Tools</p>
-        <a href="https://betterthanyou.glitch.me">Better Than You</a>
-        <a href="https://bettervideo.glitch.me">Better Video</a>
-        <a href="https://voice-o-matic.glitch.me/">Better Assistant</a>
+        <a class="footer-url" href="https://betterthanyou.glitch.me">Better Than You</a>
+        <a class="footer-url" href="https://bettervideo.glitch.me">Better Video</a>
+        <a class="footer-url" href="https://voice-o-matic.glitch.me/">Better Assistant</a>
         <!-- <input type="checkbox" id="autofill"> -->
         <!-- <label for="autofill">Enable Autofill?</label> -->
+        <button class="footer-url" id="backgroundpopup">Change Background</button>
     </footer>
-    
+    <div id="bg-whole">
+        <div id="greybg"></div>
+
+        <div id="bgpopup">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" name="" id="bgurl">
+            </div>
+        </div>
+    </div>
 </html>
