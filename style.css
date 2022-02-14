@@ -157,6 +157,8 @@ body{
     margin-right: -50%;
     transform: translate(-50%, -50%);
     background-color: transparent;
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
 }
 
 #search input{
@@ -170,6 +172,8 @@ body{
     color: #fff;
     min-height: 25px;
     min-width: 200px;
+    backdrop-filter: blur(10px);
+
 }
 
 #search input:focus{
@@ -177,11 +181,11 @@ body{
 }
 
 footer{
-    background-color: rgba(255,143,158, 40%);
+    background-color: rgba(255,255,255, 0%);
     position: absolute;
     bottom: 10px;
     width: 50%;
-    border-top: 3px solid #FF8F9E;
+
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -193,10 +197,12 @@ footer{
     bottom: 0;
     overflow: hidden;
     padding-bottom: 30px;
-    border-bottom: 3px solid #FF8F9E;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     max-height: 20%;
     min-height: 0;
     transform: translateY(90px);
+    backdrop-filter: blur(10px);
     
 }
 
@@ -207,12 +213,13 @@ footer p{
 
 footer .footer-url{
     margin-right: 20px;
-    color: rgb(0, 0, 0);
+    color: white;
     border-radius: 8px;
     padding: 5px;
     transition: all .5s;
     margin-bottom: 20px;
     width: fit-content;
+    border: 1px solid white;
 }
 
 footer .footer-url:last-child{
@@ -224,18 +231,19 @@ footer .footer-url:active{
 }
 
 #backgroundpopup{
-    background-color: pink;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
     border: 2px solid transparent;
     cursor: pointer;
 }
 
 footer .footer-url:hover{
-    border: 2px solid pink;
+    border: 2px solid white;
     color: white;
 }
 
 #backgroundpopup:hover{
-    border: 2px solid #FF8F9E;
+    border: 2px solid white;
 }
 
 
@@ -257,7 +265,7 @@ footer .footer-url:hover{
     max-width: 50vh;
 }
 
-#greybg{
+#greybg, #greybg2, #greybg3, #greybg4, #greybg5, #greybg6, #greybg7{
     position: fixed;
     background-color: black;
     opacity: 0.5;
@@ -266,20 +274,27 @@ footer .footer-url:hover{
     top: 0%;
 }
 
-#greybg2{
-    position: fixed;
-    background-color: black;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    top: 0%;
-}
+
 
 #bgpopup{
     position: fixed;
-    background-color: #FF8F9E;
+    background-color: rgba(255,255,255, 4%);
+    backdrop-filter: blur(20px);
     width: 30%;
     height: 200px;
+    top: 20%;
+    left: 33%;
+    border-radius: 15px;
+    padding: 25px;
+    padding-right: 40px;
+    color: white;
+}
+
+#bgpopup-shortcuts{
+    position: fixed;
+    background-color: #FF8F9E;
+    width: 30%;
+    height: 250px;
     top: 20%;
     left: 33%;
     border-radius: 15px;
@@ -311,9 +326,18 @@ footer .footer-url:hover{
     font-size: 2.5vh;
     margin-bottom: 10px;
     margin: 0;
+
+}
+#bgurltype input{
+    background-color: rgba(255,255,255, 7%);
 }
 
+
 #bg-whole{
+    visibility: hidden;
+}
+
+#shortcut1-whole, #shortcut2-whole, #shortcut3-whole, #shortcut4-whole, #color-whole{
     visibility: hidden;
 }
 
@@ -328,15 +352,18 @@ footer .footer-url:hover{
 }
 
 .clock{
-    background-color: rgba(255,143,158, 40%);
+    background-color: rgba(255,255,255, 0%);
     position: absolute;
     padding: 12px;
     border-radius: 14px;
     top: 1%;
-    left: 1%;
+    left: 87%;
     position: fixed;
     user-select: none;
     color: white;
+    
+    backdrop-filter: blur(15px);
+    
 }
 
 .clock-time, .clock-ampm{
@@ -367,22 +394,109 @@ footer .footer-url:hover{
 footer label{
     font-size: 1.5vh;
     transition: .5s;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 4px;
 }
 
 #tab-whole{
     visibility: hidden;
 }
 
-#launchTabCustomize{
-    background-color: pink;
+#launchTabCustomize, #clearShortcuts, #launchColorCustomize, #colorsubmit, #resetColors{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
     border: 2px solid transparent;
     cursor: pointer;
 }
 
-#launchTabCustomize:hover{
-    border: 2px solid #FF8F9E;
+#launchTabCustomize:hover, #clearShortcuts:hover, #launchColorCustomize:hover, #resetColors:hover{
+    border: 2px solid white;
 }
 
 footer label:hover{
+    color: white;
+    border: 2px solid white;
+}
+
+#shortcuts{
+    display: grid;
+    top: 5%;
+    left: 1%;
+    margin-left: 50px;
+    margin-top: 50px;
+    gap: 25px;
+    position: fixed;
+}
+
+#shortcut1, #shortcut2, #shortcut3, #shortcut4{
+    /* background-color: rgba(255,143,158, 40%); */
+    background-color: transparent;
+}
+
+.shortcut{
+    height: 8vh;
+    width: 8vh;
+    text-align: center;
+    font-size: 5vh;
+    border-radius: 50%;
+    border: none;
+    justify-content: center;
+    display: flex;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    backdrop-filter: blur(50px);
+    transition: .5s;
+}
+
+.shortcut img{
+    width: 70px;
+
+}
+
+#shortcuts a{
+    height: 8vh;
+    width: 8vh;
+    text-align: center;
+    font-size: 5vh;
+    border-radius: 50%;
+    border: none;
+    justify-content: center;
+    display: flex;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#colorsubmit{
+    border-radius: 8px;
+    font-size: 3vh;
+    padding: 10px;
+}
+
+#colorInput{
+    margin-top: inherit;
+    width: 60px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+.shortcut:hover{
+    backdrop-filter: blur(0px);
+}
+
+#bgpopup-shortcuts{
+    background-color: rgba(255,255,255, 4%);
+    backdrop-filter: blur(20px);
+    
+}
+
+#bgurltype label{
     color: white;
 }
