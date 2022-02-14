@@ -1,10 +1,10 @@
 {
 
-    "name": "BetterTab",
-    "version": "0.0",
-    "manifest_version": "2.10.2",
+    "name": "betterTab",
+    "version": "2.1.0",
+    "manifest_version": 3,
     "description": "Better new tab for your new tab needs!",
-    "browser_action": {
+    "action": {
         "default_icon": "betterlogo.png"
     },
     "chrome_url_overrides" : {
@@ -14,6 +14,6 @@
         "tabs"
     ],
     "background" : {
-        "scripts" : ["popup.js"]
+        "service_worker" : "background.js"
     }
 }
