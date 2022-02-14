@@ -4,6 +4,7 @@
         <link rel="icon" href="betterlogo.png">
         <link rel="stylesheet" href="style.css">
         </style>
+        <title>New Tab</title>
        
     </head>
     <body>
@@ -17,24 +18,38 @@
                 <input id="searchbar" name="q" type="text" placeholder="Search with Google or type URL..." minlength="1" autocomplete="off" required >
                
             </div>
+            
 </div>
 
 
+<div id="shortcuts">
+    <a id="shortcut1"><button id="shortcut" class="shortcut"><img id="shortcutImg1" src="plussign.png"></button></a>
+    <a id="shortcut2"><button id="shortcut" class="shortcut"><img id="shortcutImg2" src="plussign.png"></button></a>
+    <a id="shortcut3"><button id="shortcut" class="shortcut"><img id="shortcutImg3" src="plussign.png"></button></a>
+    <a id="shortcut4"><button id="shortcut" class="shortcut"><img id="shortcutImg4" src="plussign.png"></button></a>
+
+</div>
+
     </body>
 <br><br><br>
-    <footer>
+    <footer id="footer">
         <p>More Tools</p>
-        <a class="footer-url" href="https://betterthanyou.glitch.me">Better Than You</a>
-        <a class="footer-url" href="https://bettervideo.glitch.me">Better Video</a>
-        <a class="footer-url" href="https://voice-o-matic.glitch.me/">Better Assistant</a>
+        <button class="footer-url" id="clearShortcuts" onclick="clearAllShortcuts()">Clear All Shortcuts</button>
+        <a class="footer-url" id="betterThanYou" href="https://betterthanyou.glitch.me">betterThanYou</a>
+        <a class="footer-url" id="betterVideo" href="https://bettervideo.glitch.me">betterVideo</a>
+        <a class="footer-url" id="betterAssistant" href="https://voice-o-matic.glitch.me/">betterAssistant</a>
         <!-- <input type="checkbox" id="autofill"> -->
         <!-- <label for="autofill">Enable Autofill?</label> -->
         <button class="footer-url" id="backgroundpopup">Change Background</button>
         <button class="footer-url" id="launchTabCustomize">New Tab Name</button>
+        <button class="footer-url" id="launchColorCustomize">Colors</button>
+        <button class="footer-url" id="resetColors">Reset Colors</button>
 
-        <input type="checkbox" class="footer-url" id="clockPosToggle"><label for="clockPosToggle">Clock moves when scroll</label>
+
+
+        <input type="checkbox" class="footer-url" id="clockPosToggle"><label id="clockToggleLabel" for="clockPosToggle">Clock moves when scroll</label>
         <br>
-        <div class="credits">betterTab</div><div class="credits">Made by Elijah Ryerson</div> <div class="credits">and so was every other betterProject</div>
+        <div id="credits"><div class="credits" id="betterTabCredits">betterTab</div><div class="credits" id="madeByMeCredits">Made by Elijah Ryerson</div> <div class="credits" id="everybetterProjectCredits">and so was every other betterProject</div></div>
     </footer>
     
     <div id="bg-whole">
@@ -47,6 +62,20 @@
             </div><br><br><br><br>
             <p>
                 Press enter while textbox selected to confirm
+            </p>
+        </div>
+    </div>
+
+    <div id="color-whole">
+        <div id="greybg7"></div>
+
+        <div id="bgpopup">
+            <div id="bgurltype">
+                
+                <label for="bgurl" class="colorlabel">What color would you like?</label> <input type="color" class="boxtext" placeholder="e.g. New Tab" id="colorInput">
+            </div><br><br>
+            <p>
+                <button id="colorsubmit">Submit</button>
             </p>
         </div>
     </div>
@@ -65,6 +94,70 @@
             </p>
         </div>
     </div>
+<!-- SHORTCUTS START -->
+    <div id="shortcut1-whole">
+        <div id="greybg3"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut1"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut1">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <div id="shortcut2-whole">
+        <div id="greybg4"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut2"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut2">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <div id="shortcut3-whole">
+        <div id="greybg5"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut3"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut3">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <div id="shortcut4-whole">
+        <div id="greybg6"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut4"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut4">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- SHORTCUTS END -->
+
 
 
     <div class="clock" id="draggable">
