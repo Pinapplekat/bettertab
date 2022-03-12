@@ -623,22 +623,10 @@ const resetColors = document.getElementById('resetColors')
 
 var elem = document.documentElement;
 document.addEventListener('keydown', (e) => {
-    if(e.key = "Escape"){
-        clockDisplay.classList.remove('clock-large')
-        clockDisplay.classList.add('clock')
-        clockDisplay.removeAttribute('style')
-        // document.querySelector(".clock-ampm").classList.remove('hidden')
-        document.querySelector(".clock-second").classList.remove('hidden')
-        document.querySelector(".clock-second").classList.remove('hidden')
-        document.getElementById('shortcuts').classList.remove('hidden')
-        document.getElementById('search').classList.remove('hidden')
-        document.getElementById('mainlogo').classList.remove('hidden')
-        document.getElementById('footer').classList.remove('hidden')
-        clockDisplay.title = 'CTRL + ALT + C'
-    }
+    
 })
 
-document.onkeydown = function(e){
+document.addEventListener('keydown', (e) => {
     if(e.ctrlKey && e.altKey && e.which == 67){
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
@@ -660,6 +648,25 @@ document.onkeydown = function(e){
         document.getElementById('footer').classList.add('hidden')
         clockDisplay.removeAttribute('title')
         
+    } else if(e.which == 27 || e.key == "f"){
+        document.exitFullscreen()
+        clockDisplay.classList.remove('clock-large')
+        clockDisplay.classList.add('clock-swipe')
+        clockDisplay.style.top = '0'
+        setTimeout(function(){
+            clockDisplay.classList.remove('clock-swipe')
+            clockDisplay.classList.add('clock')
+            
+        },1000);
+        clockDisplay.removeAttribute('style')
+        // document.querySelector(".clock-ampm").classList.remove('hidden')
+        document.querySelector(".clock-second").classList.remove('hidden')
+        document.querySelector(".clock-second").classList.remove('hidden')
+        document.getElementById('shortcuts').classList.remove('hidden')
+        document.getElementById('search').classList.remove('hidden')
+        document.getElementById('mainlogo').classList.remove('hidden')
+        document.getElementById('footer').classList.remove('hidden')
+        clockDisplay.title = 'CTRL + ALT + C'
     }
-}
+})
 
