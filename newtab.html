@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="icon" href="betterlogo.png">
+        <link rel="stylesheet" href="style.css">
+        </style>
+        <title>New Tab</title>
+       
+    </head>
+    <body class="body">
+        
+    <script src="newtab.js" defer></script>
+        <img src="betterlogo.png" id="mainlogo" title="betterProjects">
+        
+        <div class="main">
+            
+            <div id="search">
+                <input id="searchbar" name="q" type="text" placeholder="Search with Google or type URL..." minlength="1" autocomplete="off" title="Enter URL" >
+               
+                <a id="toolsPopop" href="#footer">
+                    <button class="footer-url" id="toolsUrl">
+                        Tools
+                    </button>
+                </a>
+            </div>
+            
+</div>
+
+
+<div id="shortcuts">
+    <a id="shortcut1"><button id="shortcut" class="shortcut"><img id="shortcutImg1" src="plussign.png"></button></a>
+    <a id="shortcut2"><button id="shortcut" class="shortcut"><img id="shortcutImg2" src="plussign.png"></button></a>
+    <a id="shortcut3"><button id="shortcut" class="shortcut"><img id="shortcutImg3" src="plussign.png"></button></a>
+    <a id="shortcut4"><button id="shortcut" class="shortcut"><img id="shortcutImg4" src="plussign.png"></button></a>
+    
+
+</div>
+
+    </body>
+<br><br><br>
+    <footer id="footer">
+        <p>More Tools</p>
+        <button class="footer-url" id="clearShortcuts" onclick="clearAllShortcuts()">Clear All Shortcuts</button>
+        <a class="footer-url" id="betterThanYou" href="https://betterthanyou.glitch.me">betterThanYou</a>
+        <a class="footer-url" id="betterVideo" href="https://bettervideo.glitch.me">betterVideo</a>
+        <a class="footer-url" id="betterAssistant" href="https://voice-o-matic.glitch.me/">betterAssistant</a>
+        <!-- <input type="checkbox" id="autofill"> -->
+        <!-- <label for="autofill">Enable Autofill?</label> -->
+        <button class="footer-url" id="backgroundpopup">Change Background</button>
+        <button class="footer-url" id="launchTabCustomize">New Tab Name</button>
+        <!-- <button class="footer-url" id="launchColorCustomize"></button>
+        <button class="footer-url" id="resetColors">s</button> -->
+
+        <br>
+        <div id="credits"><div class="credits" id="betterTabCredits">betterTab</div><div class="credits" id="madeByMeCredits">Made by Elijah Ryerson</div></div>
+    </footer>
+    
+    <div id="bg-whole">
+        <div id="greybg"></div>
+
+        <div id="bgpopup">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="bgurl">
+            </div><br><br><br><br>
+            <p>
+                Press enter while textbox selected to confirm
+            </p>
+        </div>
+    </div>
+
+    <div id="color-whole">
+        <div id="greybg7"></div>
+
+        <div id="bgpopup">
+            <div id="bgurltype">
+                
+                <label for="bgurl" class="colorlabel">What color would you like?</label> <input type="color" class="boxtext" placeholder="e.g. New Tab" id="colorInput">
+            </div><br><br>
+            <p>
+                <button id="colorsubmit">Submit</button>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="tab-whole">
+        <div id="greybg2"></div>
+
+        <div id="bgpopup">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">What do you want the tab to be called?</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. New Tab" id="tabText">
+            </div><br><br><br><br>
+            <p>
+                Press enter while textbox selected to confirm
+            </p>
+        </div>
+    </div>
+<!-- SHORTCUTS START -->
+    <div id="shortcut1-whole">
+        <div id="greybg3"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut1"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut1">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <div id="shortcut2-whole">
+        <div id="greybg4"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut2"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut2">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <div id="shortcut3-whole">
+        <div id="greybg5"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut3"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut3">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <div id="shortcut4-whole">
+        <div id="greybg6"></div>
+
+        <div id="bgpopup-shortcuts">
+            <div id="bgurltype">
+                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
+                <input type="text" class="boxtext" id="imgUrlShortcut4"><br><br><br>
+                <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
+                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut4">
+            </div><br><br><br><br>
+            <p>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- SHORTCUTS END -->
+
+
+
+
+    <div class="clock" id="draggable" title="CTRL + ALT + C">
+        <span class="clock-time">12:00</span>
+        <span class="clock-ampm">AM</span><br>
+        <span class="clock-second">00</span>
+    </div>
+
+    <!-- <div class="clock" id="draggable">
+        <span class="weather-temp"></span>
+        <span class="weather-desc">AM</span><br>
+        <span class="clock-second">00</span>
+    </div> -->
+</html>

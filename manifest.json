@@ -1,0 +1,16 @@
+{
+
+    "name": "betterTab",
+    "version": "2.2.0",
+    "manifest_version": 3,
+    "description": "Better new tab for your new tab needs!",
+    "action": {
+        "default_icon": "betterlogo.png"
+    },
+    "chrome_url_overrides" : {
+        "newtab" : "newtab.html"
+    },
+    "background" : {
+        "service_worker" : "background.js"
+    }
+}
