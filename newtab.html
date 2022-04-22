@@ -1,15 +1,71 @@
 <!doctype html>
 <html>
     <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="icon" href="betterlogo.png">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css" defer>
         </style>
+        
         <title>New Tab</title>
        
     </head>
     <body class="body">
+
+        <button id="newscornertoggle">News</button>
+
+    <div id="rippletransition" class="closed"></div>
+    
+    <div id="newscorner" class="closed">
         
-    <script src="newtab.js" defer></script>
+        <div class="container-fluid m-0 p-0">
+            
+            <!-- navbar -->
+            <div>
+                <nav style="position: fixed; margin: 0 0 0 0; width: 100%; top: 0; z-index: 100000000;" class="navbar navbar-expand-lg navbar-dark bg-black text-white">
+                    <div class="container-fluid">
+                        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" id="genral">General</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" id="business" >Business</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="sport">Sports</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" id="technology">Technology</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="entertainment">Insider</a>
+                                </li>
+                            </ul>
+                            <input type="text" id="articleSearch" placeholder="Search..."><i class="nav-item go-btn" style="margin-left: 3px;"> Go</i>
+                            
+                        </div>
+                    </div>
+                </nav>
+            </div>
+    
+            <div class="newsCard"><br>
+                <div class="row m-4" id="newsType"></div>
+                <div class="row me-2 ms-2" style="color: white;" id="newsdetails"></div>
+            </div>
+    
+            <div class="blur"></div>
+        </div>
+    
+    </div>
+        
+    
         <img src="betterlogo.png" id="mainlogo" title="betterProjects">
         
         <div class="main">
@@ -17,7 +73,7 @@
             <div id="search">
                 <input id="searchbar" name="q" type="text" placeholder="Search with Google or type URL..." minlength="1" autocomplete="off" title="Enter URL" >
                
-                <a id="toolsPopop" href="#footer">
+                <a id="toolsPopop">
                     <button class="footer-url" id="toolsUrl">
                         Tools
                     </button>
@@ -48,11 +104,21 @@
         <!-- <label for="autofill">Enable Autofill?</label> -->
         <button class="footer-url" id="backgroundpopup">Change Background</button>
         <button class="footer-url" id="launchTabCustomize">New Tab Name</button>
+        <select class="footer-url" style="color:black;border:none;outline:none;" id="searchEngine">
+            <option value="Google">Google</option>
+            <option value="Bing">Bing</option>
+            <option value="Yahoo">Yahoo!</option>
+            <option value="DuckDuckGo">DuckDuckGo</option>
+            <option value="Ecosia">Ecosia</option>
+            <option value="Brave">Brave</option>
+            <option value="YouTube">YouTube</option>
+            <option value="Twitter">Twitter</option>
+        </select>
         <!-- <button class="footer-url" id="launchColorCustomize"></button>
         <button class="footer-url" id="resetColors">s</button> -->
 
         <br>
-        <div id="credits"><div class="credits" id="betterTabCredits">betterTab</div><div class="credits" id="madeByMeCredits">Made by Elijah Ryerson</div></div>
+        <div id="credits"><a href="https://chrome.google.com/webstore/detail/bettertab/pfkjbfpnioodgafpgcdpagloleghageg" class="credits" id="betterTabCredits">betterTab</a>
     </footer>
     
     <div id="bg-whole">
@@ -62,6 +128,9 @@
             <div id="bgurltype">
                 <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
                 <input type="text" class="boxtext" id="bgurl">
+                <br><br><br>
+                <label for="bgurl" class="bgurllabel">Upload</label><br><br>
+                <input type="file" accept=".png,.apng,.gif,.jpeg,.jpg,.svg" class="boxfile" id="bgupload">
             </div><br><br><br><br>
             <p>
                 Press enter while textbox selected to confirm
@@ -91,7 +160,9 @@
             <div id="bgurltype">
                 <label for="bgurl" class="bgurllabel">What do you want the tab to be called?</label><br><br>
                 <input type="text" class="boxtext" placeholder="e.g. New Tab" id="tabText">
-            </div><br><br><br><br>
+            </div><br><br><br>
+            <button class="footer-url" id="timetotitle">Set To Time</button>
+            <br>
             <p>
                 Press enter while textbox selected to confirm
             </p>
@@ -103,10 +174,10 @@
 
         <div id="bgpopup-shortcuts">
             <div id="bgurltype">
-                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
-                <input type="text" class="boxtext" id="imgUrlShortcut1"><br><br><br>
+
+                <input type="text" class="" style="position: absolute; visibility: hidden;" id="imgUrlShortcut1"><br><br><br>
                 <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
-                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut1">
+                <input type="text" class="boxtext" placeholder="e.g. example.com" id="UrlShortcut1">
             </div><br><br><br><br>
             <p>
             </p>
@@ -118,10 +189,10 @@
 
         <div id="bgpopup-shortcuts">
             <div id="bgurltype">
-                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
-                <input type="text" class="boxtext" id="imgUrlShortcut2"><br><br><br>
+
+                <input type="text" class="" style="position: absolute; visibility: hidden;" id="imgUrlShortcut2"><br><br><br>
                 <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
-                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut2">
+                <input type="text" class="boxtext" placeholder="e.g. example.com" id="UrlShortcut2">
             </div><br><br><br><br>
             <p>
             </p>
@@ -133,10 +204,9 @@
 
         <div id="bgpopup-shortcuts">
             <div id="bgurltype">
-                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
-                <input type="text" class="boxtext" id="imgUrlShortcut3"><br><br><br>
+                <input type="text" class="" style="position: absolute; visibility: hidden;" id="imgUrlShortcut3"><br><br><br>
                 <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
-                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut3">
+                <input type="text" class="boxtext" placeholder="e.g. example.com" id="UrlShortcut3">
             </div><br><br><br><br>
             <p>
             </p>
@@ -148,10 +218,10 @@
 
         <div id="bgpopup-shortcuts">
             <div id="bgurltype">
-                <label for="bgurl" class="bgurllabel">Image URL</label><br><br>
-                <input type="text" class="boxtext" id="imgUrlShortcut4"><br><br><br>
+                <!-- <label for="bgurl" class="bgurllabel">Image URL</label><br><br> -->
+                <input type="text" class="" style="position: absolute; visibility: hidden;" id="imgUrlShortcut4"><br><br><br>
                 <label for="bgurl" class="bgurllabel">Shortcut URL</label><br><br>
-                <input type="text" class="boxtext" placeholder="e.g. https://example.com" id="UrlShortcut4">
+                <input type="text" class="boxtext" placeholder="e.g. example.com" id="UrlShortcut4">
             </div><br><br><br><br>
             <p>
             </p>
@@ -175,4 +245,104 @@
         <span class="weather-desc">AM</span><br>
         <span class="clock-second">00</span>
     </div> -->
+
+    <div class="context-menu" id="context-menu">
+        <div class="item" id="context-item1">
+            <i></i> Fullscreen
+        </div>
+        <hr>
+        <!-- <div class="item" id="context-item2">
+            <i></i> Timer
+        </div> -->
+        <div class="item" id="context-item3">
+            <i></i> Stopwatch
+        </div>
+
+    </div>
+
+    <div class="context-menu" id="context-menu-timer">
+        
+        
+        <div class="item" id="context-itemWatch">
+            <i></i> Quit Stopwatch
+        </div>
+       
+        
+
+    </div>
+
+
+    <div class="context-menu" id="context-menu-shortcut1">
+        <div class="item" id="context-item1Shortcut1">
+            <i></i> Edit
+        </div>
+
+        <div class="item" id="context-item2Shortcut1">
+            <i></i> Remove
+        </div>
+    
+    </div>
+
+    <div class="context-menu" id="context-menu-shortcut2">
+        <div class="item" id="context-item1Shortcut2">
+            <i></i> Edit
+        </div>
+
+        <div class="item" id="context-item2Shortcut2">
+            <i></i> Remove
+        </div>
+    
+    </div>
+
+    <div class="context-menu" id="context-menu-shortcut3">
+        <div class="item" id="context-item1Shortcut3">
+            <i></i> Edit
+        </div>
+
+        <div class="item" id="context-item2Shortcut3">
+            <i></i> Remove
+        </div>
+    
+    </div>
+
+    <div class="context-menu" id="context-menu-shortcut4">
+        <div class="item" id="context-item1Shortcut4">
+            <i></i> Edit
+        </div>
+
+        <div class="item" id="context-item2Shortcut4">
+            <i></i> Remove
+        </div>
+    
+    </div>
+
+
+
+
+    <div id="stopwatch">
+        <span id="watchhour">00:</span>
+        <span id="watchminute">00:</span>
+        <span id="watchsecond">00.</span>
+        <span id="watchMs">00</span>
+        <div id="pauseWatch">Start</div>
+    </div>
+
+    <div class="context-menu" id="context-menu-searchbar">
+        <div class="item" id="context-item1Search">
+            <i></i> Copy
+        </div>
+
+        <!-- <div class="item" id="context-item2Search">
+            <i></i> Paste
+        </div> -->
+
+        <div class="item" id="context-item3Search">
+            <i></i> Cut
+        </div>
+    
+    </div>
+   
+    
+    
+    <script src="newtab.js" defer></script>
 </html>
