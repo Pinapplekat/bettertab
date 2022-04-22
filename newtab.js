@@ -20,6 +20,8 @@ const launchTabCustom = document.getElementById('launchTabCustomize')
 const launchColor = document.getElementById('launchColorCustomize')
 const tabName = document.getElementById('tabText')
 const timeSetBtn = document.getElementById('timetotitle')
+const searchEngine = document.getElementById('searchEngine')
+
 const contItem1 = document.getElementById('context-item1')
 const contItem2 = document.getElementById('context-item2')
 const contItem3 = document.getElementById('context-item3')
@@ -35,6 +37,25 @@ const watchSec = document.getElementById('watchsecond')
 const watchMs = document.getElementById('watchMs')
 
 
+if(localStorage.getItem('searchEngine') == null || !localStorage.getItem('searchEngine')){
+    var engine = 'google'
+    localStorage.setItem('searchEngine', engine)
+} else{
+    var engine = localStorage.getItem('searchEngine')
+    searchEngine.value = engine
+    searchBar.placeholder = `Search with ${engine} or type URL...`
+}
+
+searchEngine.addEventListener('change', () => {
+    changeSearchEngine(searchEngine.value)
+})
+
+function changeSearchEngine(searchEnginelol){
+    console.log(searchEnginelol)
+    engine = searchEnginelol
+    localStorage.setItem('searchEngine', searchEnginelol)
+    searchBar.placeholder = `Search with ${engine} or type URL...`
+}
 
 // SHORTCUT 1
 const wholeShortcut1 = document.getElementById('shortcut1-whole')
@@ -200,7 +221,7 @@ if (localStorage.tabNameClock == "true"){
 if(localStorage.getItem('background') != ''){
     // searchBar.style.opacity = '0.7'
     searchBar.style.backdropFilter = 'blur(15px)'
-    searchBar.style.background = 'rgba(255, 255, 255, 0.2)'
+    searchBar.style.background = 'rgba(255, 255, 255)'
 }
 
 
@@ -214,7 +235,18 @@ searchBar.addEventListener('keydown', (e) => {
                 window.location = `https://${searchBar.value}`
             } else{
                 console.log("Searching", searchBar.value)
-                window.location = `https://www.google.com/search?q=${searchBar.value}`
+                if(engine.toLocaleLowerCase() == 'duckduckgo'){
+                    window.location = `https://www.${engine}.com/?q=${searchBar.value}`
+                }else if(engine.toLocaleLowerCase() == 'yahoo'){
+                    window.location = `https://search.${engine}.com/search?p=${searchBar.value}`
+                }else if(engine.toLocaleLowerCase() == 'brave'){
+                    window.location = `https://search.${engine}.com/search?q=${searchBar.value}`
+                }else if(engine.toLocaleLowerCase() == 'youtube'){
+                    window.location = `https://www.${engine}.com/results?search_query=${searchBar.value}`
+                }else{
+                    window.location = `https://www.${engine}.com/search?q=${searchBar.value}`
+                }
+                
             }
             
             
@@ -283,7 +315,7 @@ wholeBg.addEventListener('keydown', (e) => {
             localStorage.setItem('background', imgUrl.value)
             
             // searchBar.style.opacity = '1'
-            searchBar.style.backgroundColor = '#121212'
+            searchBar.style.backgroundColor = 'white'
             document.body.style.background = ''
 
         }else{
@@ -292,7 +324,7 @@ wholeBg.addEventListener('keydown', (e) => {
 
             document.body.style.backgroundImage = `url('${localStorage.getItem('background')}')`
             // searchBar.style.opacity = '0.7'
-            searchBar.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+            searchBar.style.backgroundColor = 'rgba(255, 255, 255)'
             document.getElementById('newscorner').style.backgroundImage = `url('${localStorage.getItem('background')}')`
 
         }
@@ -309,7 +341,7 @@ imgUpload.addEventListener("change", function(e) {
         document.body.style.backgroundImage = "url(" + reader.result + ")"; // or something 
         document.getElementById('newscorner').style.backgroundImage = `url('${reader.result}')`
         localStorage.setItem('background', reader.result)
-        searchBar.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+        searchBar.style.backgroundColor = 'rgba(255, 255, 255)'
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
@@ -1243,7 +1275,7 @@ const BUSINESS_NEWS = `https://api.nytimes.com/svc/topstories/v2/business.json?a
 const SPORTS_NEWS = `https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=${API_KEY}`;
 const ENTERTAINMENT_NEWS = `https://api.nytimes.com/svc/topstories/v2/insider.json?api-key=${API_KEY}`;
 const TECHNOLOGY_NEWS = `https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=${API_KEY}`;
-// const SEARCH_NEWS = `https://api.nytimes.com/svc/topstories/v2/api-key=${API_KEY}&query=`;
+const SEARCH_NEWS = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${API_KEY}&q=`;
 
 
 newsOpener.addEventListener('mousedown', (e) => {
@@ -1409,10 +1441,12 @@ const fetchSportsNews = async () => {
 
 const fetchTechnologyNews = async () => {
     const response = await fetch(TECHNOLOGY_NEWS);
+    
     newsDataArr = [];
     if(response.status >=200 && response.status < 300) {
         await response.json().then(json => {
             newsDataArr = json.results;
+            console.log(response)
         })
     } else {
         // handle errors
@@ -1424,44 +1458,69 @@ const fetchTechnologyNews = async () => {
     displayNews('Technology');
 }
 
-const fetchQueryNews = async () => {
+const articleSearchBar = document.getElementById('articleSearch')
+articleSearchBar.addEventListener('keyup', (e) => {
+    if(e.key == 'Enter'){
+        if(articleSearchBar.value != ''){
+            fetchQueryNews(articleSearchBar.value)
+            
+        }else{
+            return
+        }
+        
+    }
+})
 
-    if(newsQuery.value == null)
+const fetchQueryNews = async (searchTerm) => {
+
+    if(searchTerm == null){
         return;
-
-    const response = await fetch(SEARCH_NEWS+encodeURIComponent(newsQuery.value));
+    }
+    const response = await fetch(SEARCH_NEWS + searchTerm);
+    
     newsDataArr = [];
-    if(response.status >= 200 && response.status < 300) {
+    if(response.status >=200 && response.status < 300) {
         await response.json().then(json => {
-            newsDataArr = json.results;
+            newsDataArr = json.response.docs;
         })
     } else {
-        //error handle
+        // handle errors
         console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
 
-    displayNews();
+    displayNews("'" + searchTerm + "'");
 }
 
 function displayNews(category) {
-    console.log(newsDataArr.length + ' articles were found for ' + category)
+    console.log(newsDataArr.length + ' articles were found in ' + category)
     newsType.innerHTML = newsDataArr.length + ' results - ' + category;
     newsdetails.innerHTML = ''
-
-    // if(newsDataArr.length == 0) {
-    //     newsdetails.innerHTML = "<h5>No data found.</h5>"
-    //     return;
-    // }
+    console.log(newsDataArr)
+    if(newsDataArr.length == 0) {
+        newsdetails.innerHTML = "<h5>No data found.</h5>"
+        return;
+    }
 
     newsDataArr.forEach(news => {
 
+        
         var randomImage = Math.floor(Math.random() * 10) + 1;
-
-
-        var date = news.created_date.split("T");
-        var updatedDate = news.updated_date.split("T");
+        var date = 'unknown'
+        if(news.created_date){
+            date = news.created_date.split("T");
+        }else{
+            date = news.pub_date.split("T")
+        }
+        var updatedDate = 'unknown'
+        if(news.updated_date){
+            updatedDatecool = news.updated_date.split("T");
+            updatedDate = ', edited on ' + updatedDatecool[0]
+        } else{
+            updatedDate = ' '
+        }
+        
         
         var col = document.createElement('div');
         col.className="col-sm-12 col-md-4 col-lg-3 p-2 card";
@@ -1472,9 +1531,7 @@ function displayNews(category) {
         
 
         var card = document.createElement('div');
-        card.className = "p-2";
-        card.style.background = 'rgba(0, 0, 0, 0.164)'
-        card.style.backdropFilter = 'blur(50px)'
+        card.className = "p-2 transparent-bg";
         card.style.borderRadius = '8px'
         card.style.cursor = 'pointer'
         
@@ -1491,10 +1548,13 @@ function displayNews(category) {
         image.style.background = 'transparent'
         image.style.position = 'table-cell'
         image.style.verticalAlign = 'center'
-        if(news.title == null || news.multimedia == null){
+        if(news.multimedia == null){
             return
         } else{
-            image.title = news.multimedia[0].caption + ' - Image by: ' + news.multimedia[0].copyright
+            if(news.multimedia[0] || news.multimedia[0]){
+                image.title = news.multimedia[0].caption + ' - Image by: ' + news.multimedia[0].copyright
+            }
+            
         }
         
 
@@ -1509,8 +1569,16 @@ function displayNews(category) {
         imageHolder.appendChild(image)
         
         if(news.multimedia){
-
-            image.src = news.multimedia[0].url
+            if(news.multimedia[0] != null){
+                if(news.multimedia[0].url.startsWith('https://')){
+                    image.src = news.multimedia[0].url
+                }else{
+                    image.src = 'https://nytimes.com/' + news.multimedia[0].url
+                }
+            }else{
+                image.src = 'imageNull' + randomImage + '.jpg'
+            }
+            
         } else{
             image.src = `imageNull${randomImage}.jpg`
         }
@@ -1518,25 +1586,36 @@ function displayNews(category) {
         
         
         card.addEventListener('click', () => {
-            window.open(news.url)
+            if(news.url){
+                window.open(news.url)
+            }else{
+                window.open(news.web_url)
+            }
+            
         })
 
         var cardBody = document.createElement('div');
         
         var newsHeading = document.createElement('h5');
         newsHeading.className = "card-title";
-        newsHeading.innerHTML = '<h3>' + news.title + '</h3>';
+        if(news.title){
+            newsHeading.innerHTML = '<h3>' + news.title + '</h3>';
+        }else{
+            newsHeading.innerHTML = '<h3>' + news.headline.main + '</h3>';
+        }
+        
         newsHeading.style.userSelect = 'auto'
         newsHeading.style.background = 'transparent'
 
         var dateHeading = document.createElement('h6');
         dateHeading.className = "text-light";
-        dateHeading.innerHTML = date[0] + ', Edited on ' + updatedDate[0];
+        dateHeading.innerHTML = date[0] + updatedDate;
         dateHeading.style.userSelect = 'auto'
         dateHeading.style.background = 'transparent'
 
         var discription = document.createElement('p');
         discription.className="text-light";
+        discription.classList.add("description")
         discription.innerHTML = news.abstract;
         discription.style.userSelect = 'auto'
         discription.style.background = 'transparent'
