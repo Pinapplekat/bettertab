@@ -1,6 +1,8 @@
 *{
-    font-family: monospace;
+    font-family: Arial Black;
     user-select: none;
+    scroll-behavior: smooth;
+    text-overflow: ellipsis;
 }
 
 *::-webkit-scrollbar {
@@ -12,7 +14,7 @@ body{
     padding: 0px;
     font-family: monospace;
     font-size: 13px;
-    background: pink;
+    background: #000000;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -161,6 +163,23 @@ body{
     background-color: transparent;
     backdrop-filter: blur(5px);
     border-radius: 50px;
+    
+
+}
+
+.navbar{
+    font-size: 1.5vh;
+}
+#articleSearch{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+.nav-item{
+    cursor:pointer;
+}
+.go-btn:hover{
+    background-color: rgba(0, 0, 0, 0.164);
 }
 
 #search input{
@@ -168,22 +187,30 @@ body{
     width: 100%;
     height: 5vh;
     font-size: 3vh;
-    padding-left: 15px;
+    padding-left: 20px;
     border: 0px;
-    background-color: #FF8F9E;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     min-height: 25px;
     min-width: 200px;
     backdrop-filter: blur(10px);
     font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: auto;
+    resize:horizontal;
 }
 
-#search input:focus{
-    border: 1px solid white;
+#search input::placeholder, #articleSearch::placeholder{
+    color: #00000098;
+    
 }
+input::placeholder{
+    font-family: Arial;
+}
+
 
 footer{
-    background-color: rgba(255,255,255, 0%);
+    background-color: rgba(53, 53, 53, 0.1);
     position: absolute;
     bottom: 10px;
     width: 50%;
@@ -235,7 +262,7 @@ footer .footer-url:active{
 }
 
 #backgroundpopup{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(205, 205, 205, 0.2);
     color: white;
     border: 2px solid transparent;
     cursor: pointer;
@@ -271,11 +298,11 @@ footer .footer-url:hover{
 
 #greybg, #greybg2, #greybg3, #greybg4, #greybg5, #greybg6, #greybg7, #clockGreyBg{
     position: fixed;
-    background-color: black;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.04);
     width: 100%;
     height: 100%;
     top: 0%;
+    backdrop-filter: blur(20px);
 }
 
 #clockGreyBg{
@@ -290,14 +317,15 @@ footer .footer-url:hover{
 
 .hidden{
     visibility: hidden;
+    
 }
 
 #bgpopup{
     position: fixed;
-    background-color: rgba(255,255,255, 4%);
+    background-color: rgba(0, 0, 0, 0.164);
     backdrop-filter: blur(20px);
     width: 30%;
-    height: 200px;
+    height: auto;
     top: 20%;
     left: 33%;
     border-radius: 15px;
@@ -306,17 +334,22 @@ footer .footer-url:hover{
     color: white;
 }
 
+#bgpopup p{
+    bottom: 100%;
+}
+
 #bgpopup-shortcuts{
     position: fixed;
-    background-color: #FF8F9E;
+    background-color: rgba(0, 0, 0, 0.164);
+    backdrop-filter: blur(20px);
     width: 30%;
-    height: 250px;
-    top: 20%;
+    
     left: 33%;
     border-radius: 15px;
-    padding: 25px;
-    padding-right: 40px;
-    
+    padding: 55px;
+    padding-right: 85px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .boxtext{
@@ -328,23 +361,21 @@ footer .footer-url:hover{
     border: 0px;
     background-color: pink;
     color: #fff;
+    margin: 0;
+}
+
+.boxfile{
+    background-color: transparent;
     
 }
 
-#bgurltype{
-    position: relative;
-    margin-top: auto;
-    
-    
-}
 
 #bgurltype label{
     font-size: 2.5vh;
-    margin-bottom: 10px;
-    margin: 0;
-
+    /* margin-bottom: 10px; */
+    
 }
-#bgurltype input{
+#bgurltype .boxtext{
     background-color: rgba(255,255,255, 7%);
 }
 
@@ -358,7 +389,7 @@ footer .footer-url:hover{
 }
 
 .credits{
-    color: black;
+    color: white;
     transition: 0.5s;
     user-select: none;
 }
@@ -371,16 +402,18 @@ footer .footer-url:hover{
 .clock{
     background-color: rgba(255,255,255, 0%);
     position: absolute;
-    padding: 12px;
+    padding: 20px;
     border-radius: 14px;
-    top: 1%;
-    left: 87%;
+    top: 1px;
+    right: 83px;
+    max-width: fit-content;
     position: fixed;
     user-select: none;
     color: white;
     transition: width 1s, height 1s;
     backdrop-filter: blur(15px);
-
+    margin: 0;
+    min-width: fit-content;
     
 }
 
@@ -397,6 +430,11 @@ footer .footer-url:hover{
 .clock-second{
     font-size: 4vh;
 }
+
+
+
+
+
 
 .clock-large{
     width: 100%;
@@ -460,6 +498,54 @@ footer .footer-url:hover{
 }
 
 
+
+
+#stopwatch{
+    background-color: rgba(255,255,255, 0%);
+    position: absolute;
+    padding: 12px;
+    border-radius: 14px;
+    bottom: 30px;
+    right: 75px;
+    position: fixed;
+    user-select: none;
+    color: white;
+    transition: width 1s, height 1s;
+    backdrop-filter: blur(15px);
+    visibility: hidden;
+}
+
+
+
+#watchhour{
+    font-size: 4vh;
+}
+
+#watchminute{
+    font-size: 8vh;
+}
+
+#watchsecond{
+    font-size: 8vh;
+}
+
+#watchMs{
+    font-size: 4vh;
+}
+
+#pauseWatch{
+    border-radius: 4px;
+    background-color: rgba(178, 178, 178, 0.2);
+    margin: 0;
+    padding: 3px;
+    height: 3vh;
+    font-size: 2vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
 #draggable{
     cursor: move;
 }
@@ -486,14 +572,14 @@ footer label{
     visibility: hidden;
 }
 
-#launchTabCustomize, #clearShortcuts, #launchColorCustomize, #colorsubmit, #resetColors{
-    background-color: rgba(255, 255, 255, 0.2);
+#launchTabCustomize, #clearShortcuts, #launchColorCustomize, #colorsubmit, #resetColors, #timetotitle{
+    background-color: rgba(161, 161, 161, 0.2);
     color: white;
     border: 2px solid transparent;
     cursor: pointer;
 }
 
-#launchTabCustomize:hover, #clearShortcuts:hover, #launchColorCustomize:hover, #resetColors:hover{
+#launchTabCustomize:hover, #clearShortcuts:hover, #launchColorCustomize:hover, #resetColors:hover, #timetotitle:hover{
     border: 2px solid white;
 }
 
@@ -538,6 +624,7 @@ footer label:hover{
 .shortcut img{
     width: 70px;
     max-height: 90%;
+    border-radius: 8px;
 }
 
 #shortcuts a{
@@ -562,6 +649,12 @@ footer label:hover{
     padding: 10px;
 }
 
+#timetotitle{
+    border-radius: 8px;
+    font-size: 1em;
+    padding: 10px;
+}
+
 #colorInput{
     margin-top: inherit;
     width: 60px;
@@ -576,7 +669,7 @@ footer label:hover{
 }
 
 #bgpopup-shortcuts{
-    background-color: rgba(255,255,255, 4%);
+    background-color: rgba(0, 0, 0, 0.164);
     backdrop-filter: blur(20px);
     
 }
@@ -586,7 +679,7 @@ footer label:hover{
 }
 
 #toolsUrl{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(171, 171, 171, 0.2);
     margin-right: 20px;
     color: white;
     border-radius: 8px;
@@ -594,11 +687,213 @@ footer label:hover{
     transition: all .5s;
     top: 200%;
     width: fit-content;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(194, 194, 194, 0.2);
 }
 
 #toolsUrl:hover{
     border: 2px solid white;
     color: white;
+}
+
+
+.context-menu{
+    position: fixed;
+    z-index: 10000;
+    width: 150px;
+    transform: scale(0);
+    transform-origin: top left;
+    backdrop-filter: blur(10px);
+    background-color: rgba(142, 142, 142, 0.089);
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+.context-menu.active{
+    transform: scale(1);
+    transition: transform 300ms ease-in-out;
+}
+.context-menu .item{
+    padding: 8px 10px;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.context-menu .item:hover{
+    background-color: rgba(180, 180, 180, 0.2);
+}
+.context-menu .item i{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.context-menu hr{
+    margin: 1px 0px;
+
+    
+    border: 2px rgb(211, 211, 211);
+    color: rgb(211, 211, 211);
+}
+
+
+.shown{
+    visibility: visible;
+}
+
+input:focus{
+    outline: none;
+}
+
+#rippletransition{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    transition: 300ms transform ease-in-out;
+    position: fixed;
+    z-index: 10000000000000;
+    top: 88%;
+    left: 2%;
+}
+
+.closed{
+    transform: scale(0);
+
+    border-radius: 50%;
+    position: absolute;
+    
+    transition: 300ms all ease-in-out;
+
+}
+
+.open{
+    transform: scale(100);
+    border-radius: 50px;
+    transition: 300ms all ease-in-out;
+}
+
+#newscornertoggle{
+    position: fixed;
+    top: 90%;
+    left: 3%;
+    width: 75px;
+    height: 75px;
+    z-index: 1000000;
+    border: none;
+    border-radius: 50px;
+    background: rgba(159, 159, 159, 0.464);
+    backdrop-filter: blur(10px);
+    color: white;
+    transition: 300ms all ease-in-out;
+}
+
+#newscornertoggle:hover{
+    color: black;
+    background: white;
+}
+
+.fade{
+    opacity: 0;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:1;}
+    100% {opacity:0;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:1;}
+    100% {opacity:0;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:1;}
+    100% {opacity:0;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:1;}
+    100% {opacity:0;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:1;}
+    100% {opacity:0;}
+  }
+
+#newscorner{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: black;
+    /* background-position: center; */
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 100000;
+    visibility: hidden;
+    gap: 10px;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+.newsCard{
+    outline: none;
+    padding-bottom: 15px;
+    background: transparent;
+    gap: -10px;
+    border-radius: 8px;
+    padding-left: 18%;
+    max-height: 500px;
+    /* backdrop-filter: blur(5px); */
+}
+
+.card{
+    height: 200px;
+}
+.card:hover{
+    z-index: 1000000000000;
+}
+
+.transparent-bg{
+    text-overflow: ellipsis;
+    transition: all 300ms;
+    background: transparent;
+    backdrop-filter: blur(10px);
+
+}
+.transparent-bg:hover{
+    background: rgba(145, 145, 145, 0.49);
+    backdrop-filter: blur(50px);
+    outline: 3px solid white;
+}
+
+#newsType{
+    color: white;
+    font-size: 50px;
+    margin: 50px;
+}
+
+.text-indigo{
+    color: #9c6fe6;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.border5{
+    border-radius: 5px;
+}
+
+.blur{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
