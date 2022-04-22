@@ -1,7 +1,7 @@
 {
 
     "name": "betterTab",
-    "version": "2.2.0",
+    "version": "3.1.0",
     "manifest_version": 3,
     "description": "Better new tab for your new tab needs!",
     "action": {
